@@ -20,36 +20,49 @@ class Hero:
         self.current_health = starting_health
         self.abilities = list()
         self.armors = list()
+        self.deaths = 0
+        self.kills = 0
+
+    def add_kill(self, num_kills):
+        ''' Update self.kills by num_kills amount'''
+        self.kills += num_kills
+    
+    def add_death(self, num_deaths):
+        ''' Update deaths with num_deaths'''
+        self.deaths += num_deaths
 
     def fight(self, opponent):
         ''' Current Hero will take turns fighting the opponent hero passed in.'''
         ''' Current Hero will take turns fighting the opponent hero passed in.
         '''
-        # TODO: Fight each hero until a victor emerges.
-        # Phases to implement:
-        # 0) check if at least one hero has abilities. If no hero has abilities, print "Draw"
+        # TODO: Refactor this method to update the following:
+        # 1) the number of kills the hero (self) has when the opponent dies.
+        # 2) then number of kills the opponent has when the hero (self) dies
+        # 3) the number of deaths of the opponent if they die    in the fight
+        # 4) the number of deaths of the hero (self) if they die in the fight
+
         if(len(self.abilities) == 0 and len(opponent.abilities) == 0):
             print('DRAW! No one has abilities')
-        # 1) else, start the fighting loop until a hero has won
         else:
-        # 2) the hero (self) and their opponent must attack each other and each must take damage from the other's attack
-        # 3) After each attack, check if either the hero (self) or the opponent is alive
-        # 4) if one of them has died, print "HeroName won!" replacing HeroName with the name of the hero, and end the fight loop
             fighting = True
             loop_counter = 0
+
             while fighting == True:
                 hero_damage = self.attack()
                 opponent_damage = opponent.attack()
                 self.take_damage(opponent_damage)
                 opponent.take_damage(hero_damage)
-
-                loop_counter+=1
                 print(loop_counter)
+
                 if(not opponent.is_alive()):
                     print(f"{self.hero_name} won!")
+                    self.add_kill(1)
+                    opponent.add_death(1)
                     fighting = False
                 elif(not self.is_alive()):
                     print(f"{opponent.hero_name} won!")
+                    opponent.add_kill(1)
+                    self.add_death(1)
                     fighting = False
                     
 
