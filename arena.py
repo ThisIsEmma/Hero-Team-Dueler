@@ -65,7 +65,7 @@ class Arena:
             elif add_item == "3":
                 # TODO add an armor to the hero
                 # HINT: First create the armor, then add it to the hero
-                hero.add_weapon(self.create_armor())
+                hero.add_armor(self.create_armor())
 
         return hero
 
