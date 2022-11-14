@@ -13,3 +13,7 @@ The goal of this project is to practice object oriented programming concepts. Ba
 ## Language Used:
 
 Python.
+
+## Disclaimer
+
+The tutorial recommended some variable to be called 'name', however I changed to 'something_name' instead (for example: 'hero_name', 'ability_name', etc), as using the keyword 'name' produced errors when running the code. Pytests have been adjusted accordingly.  
