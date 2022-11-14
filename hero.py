@@ -43,6 +43,7 @@ class Hero:
 
         if(len(self.abilities) == 0 and len(opponent.abilities) == 0):
             print('DRAW! No one has abilities')
+            return
         else:
             fighting = True
             loop_counter = 0
@@ -88,7 +89,7 @@ class Hero:
     def attack(self):
         '''Calculate the total damage from all ability attacks.
         return: total_damage:Int'''
-        damage = 0
+        damage: int = 0
         for ability in self.abilities:
             damage += ability.attack()
         return damage
@@ -138,5 +139,6 @@ if __name__ == "__main__":
     hero1.add_ability(ability2)
     hero2.add_ability(ability3)
     hero2.add_ability(ability4)
-    hero1.fight(hero2)
+    print(hero1.attack())
+    #hero1.fight(hero2)
 
